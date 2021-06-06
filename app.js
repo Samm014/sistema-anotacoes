@@ -11,16 +11,17 @@ $(function(){
 
     var Last_textArea = $('.anotacao-single').last().find('span');
 
-    var date = new Date();
-    var hr = date.getHours();
-    var min = date.getMinutes();
+    let date = new Date();
 
-    var finaltime = hr + ':' + min;
-    
-    Last_textArea.html(finaltime);
+    let time = date.toLocaleTimeString("pt-BR", {
+        timeStyle: "short",       //Serão retornado apenas horas e minutos.  
+        hour12: false,            //Formato de 24h, suprimindo sufixos AM e PM.
+        numberingSystem: "latn"   //Resulado em algarismos indo-arábicos.
+    });
 
-    
-    
+    //console.log(time);
+    Last_textArea.html(time);
+
     var num = $('.anotacao-single').length;
     if(num < 0){
         $('.msg-div').fadeIn();
